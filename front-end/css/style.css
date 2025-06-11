@@ -1,0 +1,589 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FFEEDA;
+    width: 100%;
+    height: 100%;
+    font-family: "Open Sans", sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    max-height: 5vh;
+}
+
+#fig_top {
+    width: 1000px;
+    height: 250px;
+    background: linear-gradient(to right, #c40000, #ff5733);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 60% 40%, 0% 0%);
+}
+
+footer {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    max-height: 5vh;
+}
+
+#fig_bottom {
+    width: 800px;
+    height: 250px;
+    background: linear-gradient(to right, #c40000, #ff5733);
+    clip-path: polygon(0% 0%, 40% 70%, 100% 100%, 0% 100%, 0% 100%);
+}
+
+#losangos {
+    width: 400px;
+    position: relative;
+    left: 10vw;
+    top: 3vh;
+}
+
+main {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#section_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    width: 45%;
+    height: 60%;
+    border-radius: 50px;
+}
+
+#section_form h1 {
+    font-size: 40px;
+    position: relative;
+    bottom: 55px;
+    text-transform: uppercase;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    bottom: 55px;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    color: #aaa;
+    font-size: 20px;
+}
+
+.input-container input {
+    width: 30vw;
+    height: 3vh;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+form button {
+    width: 35%;
+    height: 45px;
+    background: linear-gradient(to right, #C31818, #F37430);
+    color: white;
+    border: none;
+    font-size: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+form button:hover {
+    transform: scale(1.03);
+}
+
+form a {
+    color: red;
+    position: relative;
+    bottom: 50px;
+    right: 50%;
+}
+
+#logo_formulario {
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    bottom: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+#logo_formulario img {
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    border: 1px solid red;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+#background_calendar {
+    background-color: #f1f5f9;
+    border-radius: 7%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 80%;
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.calendar-container {
+    text-align: center;
+    width: 450px;
+    margin: 0 auto;
+    position: relative;
+    height: auto;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+#month-year {
+    margin: 0 15px;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #000000;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px;
+    position: relative;
+    right: 100px;
+}
+
+th {
+    background-color: #900000;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.2em;
+    border-radius: 10px;
+}
+
+td:hover {
+    background-color: #D0E8F2;
+}
+
+td.selected {
+    background-color: #D71D11;
+    color: white;
+}
+
+.selected-day {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+    text-align: center;
+    position: relative;
+    bottom: 15px;
+}
+
+#btn_confirmar_dia {
+    position: relative;
+    top: 30px;
+}
+
+#btn_confirmar_dia button {
+    width: 15vw;
+    height: 5vh;
+    background-color: #811a1a;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    border-radius: 6px;
+}
+
+#btn_confirmar_dia button:hover {
+    transform: scale(1.03);
+}
+
+nav {
+    position: absolute;
+    top: 70px;
+    width: 250px;
+    margin-left: 20px;
+    display: flex;
+}
+
+nav ul li:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 250px;
+    height: 50%;
+    background-color: #F14227;
+    transition: left 0.5s ease;
+    border-radius: 5px;
+}
+
+.menu.ativo {
+    left: 0;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu ul li {
+    list-style-type: none;
+}
+
+.menu ul li a {
+    color: white;
+    text-transform: capitalize;
+    margin-top: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburguer,
+.barra {
+    position: fixed;
+}
+
+.hamburguer {
+    display: block;
+    border: none;
+    background-color: #F14227;
+    cursor: pointer;
+}
+
+.hamburguer.aberto #barra1 {
+    background-color: white;
+    transform: rotate(45deg) translate(6px, 8px);
+}
+
+.hamburguer.aberto #barra2 {
+    background-color: transparent;
+}
+
+.hamburguer.aberto #barra3 {
+    background-color: white;
+    transform: rotate(-45deg) translate(6px, -8px);
+}
+
+.barra {
+    top: 30px;
+    left: 30px;
+    background-color: black;
+    width: 35px;
+    height: 5px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+#barra2 {
+    top: 40px;
+}
+
+#barra3 {
+    top: 50px;
+}
+
+#sessao_estoque form label {
+    font-size: 20px;
+}
+
+#sessao_estoque form input {
+    width: 45vw;
+    height: 8vh;
+}
+
+#sessao_estoque form button {
+    width: 30%;
+    height: 40px;
+}
+
+#conjunto-categorias {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 35vw;
+    height: 70%;
+    border-radius: 20px;
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+#conjunto-categorias h1 {
+    font-size: 30px;
+}
+
+.btns-categorias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+    height: 100%;
+}
+
+.box-categorias {
+    background: white;
+    border-radius: 8px;
+}
+
+.botoes-anos {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    width: 30vw;
+    transition: all 0.3s;
+}
+
+.btn_contagens {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 10px;
+    background-color: #811A1A;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+
+.btn_contagens:hover {
+    transform: scale(1.03);
+    background-color: #6d1313;
+}
+
+#btn_feito {
+    margin-top: 40px;
+}
+
+#btn_feito button {
+    background-color: #6e1f1f;
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 10vw;
+}
+
+#btn_feito button:hover {
+    background-color: #551616;
+    transform: scale(1.03);
+}
+
+.modal-contagem {
+    border: none;
+    border-radius: 20px;
+    padding: 30px;
+    background: #fceadb;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    height: 200px;
+    text-align: center;
+}
+
+.modal-contagem::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px 0;
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.btn-feito {
+    background-color: #6b1d1d;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#sect_estoque {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    height: 60%;
+    width: 50%;
+    background-color: red;
+}
+
+#cima_estoque {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#cima_estoque #form_estoque {
+    display: flex;
+}
+
+@media screen and (max-width: 600px) {
+    #losangos {
+        display: none;
+    }
+
+    #section_form {
+        width: 80vw;
+        height: 60vh;
+        z-index: 2;
+        border-radius: 8%;
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-container i {
+        position: relative;
+        left: 27px;
+    }
+
+    .input-container input {
+        width: 70%;
+    }
+
+    form a {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        top: 10%;
+        font-size: 20px;
+    }
+
+    #fig_top {
+        width: 500px;
+        height: 150px;
+        background: linear-gradient(to right, #c40000, #ff5733);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 90% 20%, 0% 0%);
+    }
+
+    #fig_bottom {
+        width: 400px;
+        height: 150px;
+        background: linear-gradient(to right, #c40000, #ff5733);
+        clip-path: polygon(0% 0%, 10% 80%, 100% 100%, 0% 100%, 0% 100%);
+    }
+
+    #logo_formulario {
+        width: 140px;
+        height: 140px;
+    }
+
+    #logo_formulario img {
+        width: 100px;
+    }
+
+    div #titulo_cadastro {
+        margin-bottom: 20px;
+        margin-top: 40px;
+        font-size: 30px;
+    }
+
+
+}

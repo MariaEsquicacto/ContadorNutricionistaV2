@@ -2,28 +2,31 @@
 session_start();
 
 // Pega os tokens da sessão PHP
-$refreshToken = $_SESSION['refresh_token'] ?? '';
-$accessToken = $_SESSION['access_token'] ?? '';
+// Usamos (string) para garantir que sejam strings ou vazias, para evitar notices.
+$refreshToken = (string)($_SESSION['refresh_token'] ?? '');
+$accessToken = (string)($_SESSION['access_token'] ?? '');
 
 // Limpa os tokens da sessão PHP IMEDIATAMENTE após a primeira leitura
-// Isso é importante para segurança e para que eles sejam gerenciados pelo JS
+// Isso é importante para segurança: os tokens JWT devem ser gerenciados pelo JS no navegador
 unset($_SESSION['refresh_token']);
 unset($_SESSION['access_token']);
 
-// Opcional: Limpar outras variáveis de sessão de usuário se não forem mais necessárias
-// unset($_SESSION['id']);
-// unset($_SESSION['nome']);
+// --- Debugging de Sessão PHP no Servidor ---
+error_log("DEBUG CALENDARIO PHP: Access Token lido da SESSION PHP: " . ($accessToken === '' ? 'NÃO ENCONTRADO' : $accessToken));
+error_log("DEBUG CALENDARIO PHP: Refresh Token lido da SESSION PHP: " . ($refreshToken === '' ? 'NÃO ENCONTRADO' : $refreshToken));
+// --- Fim Debugging de Sessão PHP ---
 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="../css/style.css">
     <title>Calendário</title>
     <style>
         #month-year {
@@ -104,99 +107,119 @@ unset($_SESSION['access_token']);
     </footer>
 
     <script>
-         const abrir_menu = document.getElementsByClassName('hamburguer')[0];
-        const menu = document.getElementsByClassName('menu')[0];
-        abrir_menu.addEventListener('click', () => {
-            abrir_menu.classList.toggle('aberto');
-            menu.classList.toggle('ativo');
-        });
         // Transfere os tokens da sessão PHP para o sessionStorage do navegador
+        // json_encode já retorna uma string JS válida (ex: "meutoken" ou null)
         const accessTokenFromPHP = <?= json_encode($accessToken) ?>;
         const refreshTokenFromPHP = <?= json_encode($refreshToken) ?>;
 
-        if (accessTokenFromPHP) {
+        console.log(accessTokenFromPHP)
+        if (accessTokenFromPHP) { // Verifica se é null ou uma string vazia PHP
             sessionStorage.setItem('access_token', accessTokenFromPHP);
+            console.log("DEBUG CALENDARIO JS: Access Token salvo no sessionStorage:", accessTokenFromPHP);
+        } else {
+            console.log("DEBUG CALENDARIO JS: Access Token NÃO encontrado na sessão PHP para salvar ou era vazio/nulo.");
+            sessionStorage.removeItem('access_token'); // Garante que não há lixo no sessionStorage
         }
-        if (refreshTokenFromPHP) {
+        if (refreshTokenFromPHP) { // Verifica se é null ou uma string vazia PHP
             sessionStorage.setItem('refresh_token', refreshTokenFromPHP);
+            console.log("DEBUG CALENDARIO JS: Refresh Token salvo no sessionStorage:", refreshTokenFromPHP);
+        } else {
+            console.log("DEBUG CALENDARIO JS: Refresh Token NÃO encontrado na sessão PHP para salvar ou era vazio/nulo.");
+            sessionStorage.removeItem('refresh_token'); // Garante que não há lixo no sessionStorage
         }
 
-        // Variáveis e Funções do Calendário
-        let currentMonth = new Date().getMonth();
-        let currentYear = new Date().getFullYear();
-        let today = new Date().getDate();
-        let selectedCell = null;
+        // Funções do Menu Hambúrguer
+        document.addEventListener('DOMContentLoaded', () => {
+            const abrir_menu = document.querySelector('.hamburguer');
+            const menu = document.querySelector('.menu');
 
-        function renderCalendar(month, year) {
-            const monthYearElement = document.getElementById("month-year");
-            const calendarBody = document.getElementById("calendar-body");
-
-            if (!monthYearElement || !calendarBody) return;
-
-            monthYearElement.innerText = new Date(year, month).toLocaleDateString("pt-BR", {
-                month: "long",
-                year: "numeric"
-            });
-            calendarBody.innerHTML = "";
-            const firstDay = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            let row = document.createElement("tr");
-
-            for (let i = 0; i < firstDay; i++) {
-                row.appendChild(document.createElement("td"));
+            if (abrir_menu && menu) {
+                abrir_menu.addEventListener('click', () => {
+                    abrir_menu.classList.toggle('aberto');
+                    menu.classList.toggle('ativo');
+                });
             }
 
-            for (let i = 1; i <= daysInMonth; i++) {
-                let cell = document.createElement("td");
-                cell.innerText = i;
-                cell.onclick = function() {
-                    selectDay(this, i, month, year);
-                };
+            // Variáveis e Funções do Calendário
+            let currentMonth = new Date().getMonth();
+            let currentYear = new Date().getFullYear();
+            let today = new Date().getDate();
+            let selectedCell = null;
 
-                if (i === today && month === new Date().getMonth() && year === new Date().getFullYear()) {
-                    cell.classList.add("selected");
-                    selectedCell = cell;
-                    const selectedDayElement = document.getElementById("selected-day");
-                    if (selectedDayElement) {
-                        selectedDayElement.innerText = `Dia ${i}/${String(month + 1).padStart(2, "0")}/${year}`;
+            function renderCalendar(month, year) {
+                const monthYearElement = document.getElementById("month-year");
+                const calendarBody = document.getElementById("calendar-body");
+
+                // Verifica se os elementos do calendário existem antes de tentar manipulá-los
+                if (!monthYearElement || !calendarBody) {
+                    console.error("Elementos do calendário (month-year ou calendar-body) não encontrados.");
+                    return; // Sai da função se os elementos não existirem
+                }
+
+                monthYearElement.innerText = new Date(year, month).toLocaleDateString("pt-BR", {
+                    month: "long",
+                    year: "numeric"
+                });
+                calendarBody.innerHTML = "";
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                let row = document.createElement("tr");
+
+                for (let i = 0; i < firstDay; i++) {
+                    row.appendChild(document.createElement("td"));
+                }
+
+                for (let i = 1; i <= daysInMonth; i++) {
+                    let cell = document.createElement("td");
+                    cell.innerText = i;
+                    cell.onclick = function() {
+                        selectDay(this, i, month, year);
+                    };
+
+                    if (i === today && month === new Date().getMonth() && year === new Date().getFullYear()) {
+                        cell.classList.add("selected");
+                        selectedCell = cell;
+                        const selectedDayElement = document.getElementById("selected-day");
+                        if (selectedDayElement) {
+                            selectedDayElement.innerText = `Dia ${i}/${String(month + 1).padStart(2, "0")}/${year}`;
+                        }
+                    }
+                    row.appendChild(cell);
+
+                    if ((firstDay + i) % 7 === 0) {
+                        calendarBody.appendChild(row);
+                        row = document.createElement("tr");
                     }
                 }
-                row.appendChild(cell);
+                calendarBody.appendChild(row);
+            }
 
-                if ((firstDay + i) % 7 === 0) {
-                    calendarBody.appendChild(row);
-                    row = document.createElement("tr");
+            function changeMonth(step) {
+                currentMonth += step;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                } else if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentMonth, currentYear);
+            }
+
+            function selectDay(cell, day, month, year) {
+                if (selectedCell) {
+                    selectedCell.classList.remove("selected");
+                }
+                selectedCell = cell;
+                selectedCell.classList.add("selected");
+                const selectedDayElement = document.getElementById("selected-day");
+                if (selectedDayElement) {
+                    selectedDayElement.innerText = `Dia ${day}/${String(month + 1).padStart(2, "0")}/${year}`;
                 }
             }
-            calendarBody.appendChild(row);
-        }
 
-        function changeMonth(step) {
-            currentMonth += step;
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            } else if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            }
+            // Inicializa o calendário ao carregar a página
             renderCalendar(currentMonth, currentYear);
-        }
-
-        function selectDay(cell, day, month, year) {
-            if (selectedCell) {
-                selectedCell.classList.remove("selected");
-            }
-            selectedCell = cell;
-            selectedCell.classList.add("selected");
-            const selectedDayElement = document.getElementById("selected-day");
-            if (selectedDayElement) {
-                selectedDayElement.innerText = `Dia ${day}/${String(month + 1).padStart(2, "0")}/${year}`;
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderCalendar(currentMonth, currentYear); // Inicializa o calendário
 
             const btnConcluidoCalendario = document.querySelector('#btn_confirmar_dia button');
             if (btnConcluidoCalendario) {

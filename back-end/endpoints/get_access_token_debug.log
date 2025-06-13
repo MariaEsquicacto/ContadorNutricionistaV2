@@ -1,0 +1,4 @@
+[13-Jun-2025 12:41:56 Europe/Berlin] DEBUG GET_ACCESS: Refresh token não encontrado na sessão PHP.
+[13-Jun-2025 12:42:41 Europe/Berlin] DEBUG GET_ACCESS: Refresh token encontrado na sessão: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTEzNDYsImV4cCI6MTc1MDQxNjE0NiwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.AreokeFdbMPOnuv2WJL-tBim2OWd8DsVL3EGZO-yBiM
+[13-Jun-2025 12:42:41 Europe/Berlin] DEBUG GET_ACCESS: Refresh token verificado no DB com sucesso para id_usuario: 14
+[13-Jun-2025 12:42:42 Europe/Berlin] DEBUG GET_ACCESS: Novo access token gerado para id_usuario: 14

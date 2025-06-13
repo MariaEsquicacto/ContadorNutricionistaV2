@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ];
 
     $context = stream_context_create($opts);
-    $result = json_decode(file_get_contents('http://localhost/contador_phpv2/back-end/endpoints/post_user.php', false, $context), true);
+    $result = json_decode(file_get_contents('http://localhost/Contador_phpv2-main/back-end/endpoints/post_user.php', false, $context), true);
 
     $mensagem = $result['mensagem'] ?? $result['erro'] ?? null;
 }

@@ -42,11 +42,11 @@ if (isset($dados['nome'], $dados['senha'])) {
                 'nivel' => $usuario['nivel_usuario']
             ];
 
-
             // Payload do Refresh Token
+            // Nota: O payload do refresh token é geralmente mais simples, mas pode ser como o do access token.
             $refreshTokenPayload = [
                 'iat' => $issuedAt,
-                'exp' => $accessExp,
+                'exp' => $refreshExp, // A expiração do refresh token deve ser mais longa
                 'id_usuario' => $usuarioId,
                 'nome' => $usuario['nome_usuario'],
                 'nivel' => $usuario['nivel_usuario']
@@ -60,15 +60,30 @@ if (isset($dados['nome'], $dados['senha'])) {
             $stmtRefresh = $mysqli->prepare(
                 "INSERT INTO refresh_tokens (id_usuario, token, expiracao) VALUES (?, ?, ?)"
             );
-            $stmtRefresh->bind_param("iss", $usuarioId, $refreshToken, $expira_em);
-            $stmtRefresh->execute();
-            $stmtRefresh->close();
+            if ($stmtRefresh) { // Adicionado verificação para o prepare
+                $stmtRefresh->bind_param("iss", $usuarioId, $refreshToken, $expira_em);
+                $stmtRefresh->execute();
+                $stmtRefresh->close();
+            } else {
+                // Log de erro se o prepare falhar, mas não interrompe o login
+                error_log("Erro ao preparar a query para salvar refresh token: " . $mysqli->error);
+            }
+
+            // --- AQUI É ONDE OS TOKENS SÃO SALVOS NA SESSÃO PHP ---
+            session_start(); // Garante que a sessão está iniciada (já está no topo do arquivo principal que inclui este endpoint)
+            $_SESSION['id_usuario'] = $usuarioId;
+            $_SESSION['nome_usuario'] = $usuario['nome_usuario'];
+            $_SESSION['access_token'] = $accessToken;
+            $_SESSION['refresh_token'] = $refreshToken;
+            // --- FIM DA ADIÇÃO ---
 
             echo json_encode([
                 'mensagem' => 'Login realizado com sucesso!',
                 'accessToken' => $accessToken,
                 'refreshToken' => $refreshToken,
-                'expira_em' => date('Y-m-d H:i:s', $accessExp)
+                'expira_em' => date('Y-m-d H:i:s', $accessExp), // Expiração do Access Token
+                'id_usuario' => $usuarioId, // Retornar o ID do usuário para o frontend também pode ser útil
+                'nome' => $usuario['nome_usuario'] // Retornar o nome do usuário
             ]);
         } else {
             echo json_encode(['erro' => 'Senha incorreta']);
@@ -80,4 +95,9 @@ if (isset($dados['nome'], $dados['senha'])) {
     $stmt->close();
 } else {
     echo json_encode(['erro' => 'Dados incompletos']);
+}
+
+// Fechar a conexão com o banco de dados se ela foi aberta e não houve erro
+if (isset($mysqli) && $mysqli && !$mysqli->connect_error) { // Adicionado isset($mysqli)
+    $mysqli->close();
 }

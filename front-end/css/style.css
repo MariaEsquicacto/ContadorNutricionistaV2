@@ -179,14 +179,14 @@ form a {
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 #month-year {
     margin: 0 15px;
     font-size: 1.8em;
     font-weight: bold;
-    color: #000000;
+    color: #DF7200;
 }
 
 table {
@@ -198,12 +198,11 @@ table {
 }
 
 th {
-    background-color: #900000;
+    background-color: #FF5733;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 10px;
     color: white;
-    font-size: 15px;
 }
 
 td {
@@ -248,7 +247,6 @@ td.selected {
     border: none;
     cursor: pointer;
     transition-duration: 0.5s;
-    border-radius: 6px;
 }
 
 #btn_confirmar_dia button:hover {

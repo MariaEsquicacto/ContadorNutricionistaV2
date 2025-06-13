@@ -70,6 +70,3 @@ function selectDay(cell, day, month, year) {
 
 renderCalendar(currentMonth, currentYear);
 
-
-
-

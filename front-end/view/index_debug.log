@@ -1,0 +1,96 @@
+[13-Jun-2025 12:59:52 Europe/Berlin] DEBUG INDEX: Tentando conectar a: http://localhost/arthur/contador_phpv2/back-end/endpoints/login_user.php
+[13-Jun-2025 12:59:52 Europe/Berlin] DEBUG INDEX: Resposta bruta de file_get_contents: {"mensagem":"Login realizado com sucesso!","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTIzOTIsImV4cCI6MTc0OTgxNTk5MiwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.FC-CrEKK-1CQ2t-8wZKnt0cBBzMbIv1K-MOUFavJ1cc","refreshToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTIzOTIsImV4cCI6MTc1MDQxNzE5MiwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.y6bE3bX31c4z6JHnW_SDI--71lQ0-20ouzS2hr-NE_g","expira_em":"2025-06-13 08:59:52","id_usuario":14,"nome":"Davi"}
+[13-Jun-2025 12:59:53 Europe/Berlin] DEBUG INDEX: Resposta JSON decodificada: Array
+(
+    [mensagem] => Login realizado com sucesso!
+    [accessToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTIzOTIsImV4cCI6MTc0OTgxNTk5MiwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.FC-CrEKK-1CQ2t-8wZKnt0cBBzMbIv1K-MOUFavJ1cc
+    [refreshToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTIzOTIsImV4cCI6MTc1MDQxNzE5MiwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.y6bE3bX31c4z6JHnW_SDI--71lQ0-20ouzS2hr-NE_g
+    [expira_em] => 2025-06-13 08:59:52
+    [id_usuario] => 14
+    [nome] => Davi
+)
+
+[13-Jun-2025 12:59:53 Europe/Berlin] DEBUG INDEX: access_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTIzOTIsImV4cCI6MTc0OTgxNTk5MiwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.FC-CrEKK-1CQ2t-8wZKnt0cBBzMbIv1K-MOUFavJ1cc
+[13-Jun-2025 12:59:53 Europe/Berlin] DEBUG INDEX: refresh_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTIzOTIsImV4cCI6MTc1MDQxNzE5MiwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.y6bE3bX31c4z6JHnW_SDI--71lQ0-20ouzS2hr-NE_g
+[13-Jun-2025 12:59:53 Europe/Berlin] DEBUG INDEX: Redirecionar setado para TRUE.
+[13-Jun-2025 13:00:03 Europe/Berlin] DEBUG INDEX: Tentando conectar a: http://localhost/arthur/contador_phpv2/back-end/endpoints/login_user.php
+[13-Jun-2025 13:00:03 Europe/Berlin] DEBUG INDEX: Resposta bruta de file_get_contents: {"mensagem":"Login realizado com sucesso!","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MDMsImV4cCI6MTc0OTgxNjAwMywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.zvpY2eGXc_HDOgnAdgH-J4C650-sbjJTMuW3Nmz3Q2M","refreshToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MDMsImV4cCI6MTc1MDQxNzIwMywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.8YolAM3JjT6za1ROCrX-4ML8ZaoU4WoWHpxyFcsob-s","expira_em":"2025-06-13 09:00:03","id_usuario":14,"nome":"Davi"}
+[13-Jun-2025 13:00:03 Europe/Berlin] DEBUG INDEX: Resposta JSON decodificada: Array
+(
+    [mensagem] => Login realizado com sucesso!
+    [accessToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MDMsImV4cCI6MTc0OTgxNjAwMywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.zvpY2eGXc_HDOgnAdgH-J4C650-sbjJTMuW3Nmz3Q2M
+    [refreshToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MDMsImV4cCI6MTc1MDQxNzIwMywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.8YolAM3JjT6za1ROCrX-4ML8ZaoU4WoWHpxyFcsob-s
+    [expira_em] => 2025-06-13 09:00:03
+    [id_usuario] => 14
+    [nome] => Davi
+)
+
+[13-Jun-2025 13:00:03 Europe/Berlin] DEBUG INDEX: access_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MDMsImV4cCI6MTc0OTgxNjAwMywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.zvpY2eGXc_HDOgnAdgH-J4C650-sbjJTMuW3Nmz3Q2M
+[13-Jun-2025 13:00:03 Europe/Berlin] DEBUG INDEX: refresh_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MDMsImV4cCI6MTc1MDQxNzIwMywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.8YolAM3JjT6za1ROCrX-4ML8ZaoU4WoWHpxyFcsob-s
+[13-Jun-2025 13:00:03 Europe/Berlin] DEBUG INDEX: Redirecionar setado para TRUE.
+[13-Jun-2025 13:00:11 Europe/Berlin] DEBUG INDEX: Tentando conectar a: http://localhost/arthur/contador_phpv2/back-end/endpoints/login_user.php
+[13-Jun-2025 13:00:11 Europe/Berlin] DEBUG INDEX: Resposta bruta de file_get_contents: {"mensagem":"Login realizado com sucesso!","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MTEsImV4cCI6MTc0OTgxNjAxMSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.1d_W2vc0Y_jzHzP_swVbVDONqiqxd4lwsojkDRtB9nc","refreshToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MTEsImV4cCI6MTc1MDQxNzIxMSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.P8WMpz4GIsG-kq4PnGrX7qBgH6iDZAqMwrHZjKtR7jM","expira_em":"2025-06-13 09:00:11","id_usuario":14,"nome":"Davi"}
+[13-Jun-2025 13:00:11 Europe/Berlin] DEBUG INDEX: Resposta JSON decodificada: Array
+(
+    [mensagem] => Login realizado com sucesso!
+    [accessToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MTEsImV4cCI6MTc0OTgxNjAxMSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.1d_W2vc0Y_jzHzP_swVbVDONqiqxd4lwsojkDRtB9nc
+    [refreshToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MTEsImV4cCI6MTc1MDQxNzIxMSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.P8WMpz4GIsG-kq4PnGrX7qBgH6iDZAqMwrHZjKtR7jM
+    [expira_em] => 2025-06-13 09:00:11
+    [id_usuario] => 14
+    [nome] => Davi
+)
+
+[13-Jun-2025 13:00:11 Europe/Berlin] DEBUG INDEX: access_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MTEsImV4cCI6MTc0OTgxNjAxMSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.1d_W2vc0Y_jzHzP_swVbVDONqiqxd4lwsojkDRtB9nc
+[13-Jun-2025 13:00:11 Europe/Berlin] DEBUG INDEX: refresh_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI0MTEsImV4cCI6MTc1MDQxNzIxMSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.P8WMpz4GIsG-kq4PnGrX7qBgH6iDZAqMwrHZjKtR7jM
+[13-Jun-2025 13:00:11 Europe/Berlin] DEBUG INDEX: Redirecionar setado para TRUE.
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Tentando conectar a: http://localhost/arthur/contador_phpv2/back-end/endpoints/login_user.php
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Resposta bruta de file_get_contents: {"mensagem":"Login realizado com sucesso!","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc0OTgxNjIzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.f5i5ESrZw5wiM00wMJcljBTtDoZKDUg25WBCSevby-0","refreshToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc1MDQxNzQzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.1cGbPmZCVN9IOlsU8dWZyfTkCLtBDSuQCXNZum4j0KA","expira_em":"2025-06-13 09:03:59","id_usuario":14,"nome":"Davi"}
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Resposta JSON decodificada: Array
+(
+    [mensagem] => Login realizado com sucesso!
+    [accessToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc0OTgxNjIzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.f5i5ESrZw5wiM00wMJcljBTtDoZKDUg25WBCSevby-0
+    [refreshToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc1MDQxNzQzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.1cGbPmZCVN9IOlsU8dWZyfTkCLtBDSuQCXNZum4j0KA
+    [expira_em] => 2025-06-13 09:03:59
+    [id_usuario] => 14
+    [nome] => Davi
+)
+
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: access_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc0OTgxNjIzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.f5i5ESrZw5wiM00wMJcljBTtDoZKDUg25WBCSevby-0
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: refresh_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc1MDQxNzQzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.1cGbPmZCVN9IOlsU8dWZyfTkCLtBDSuQCXNZum4j0KA
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Redirecionar setado para TRUE. Tokens válidos na sessão.
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Valor final da variável $redirecionar antes da renderização: TRUE
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Tentando conectar a: http://localhost/arthur/contador_phpv2/back-end/endpoints/login_user.php
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Resposta bruta de file_get_contents: {"mensagem":"Login realizado com sucesso!","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc0OTgxNjIzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.f5i5ESrZw5wiM00wMJcljBTtDoZKDUg25WBCSevby-0","refreshToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc1MDQxNzQzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.1cGbPmZCVN9IOlsU8dWZyfTkCLtBDSuQCXNZum4j0KA","expira_em":"2025-06-13 09:03:59","id_usuario":14,"nome":"Davi"}
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Resposta JSON decodificada: Array
+(
+    [mensagem] => Login realizado com sucesso!
+    [accessToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc0OTgxNjIzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.f5i5ESrZw5wiM00wMJcljBTtDoZKDUg25WBCSevby-0
+    [refreshToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc1MDQxNzQzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.1cGbPmZCVN9IOlsU8dWZyfTkCLtBDSuQCXNZum4j0KA
+    [expira_em] => 2025-06-13 09:03:59
+    [id_usuario] => 14
+    [nome] => Davi
+)
+
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: access_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc0OTgxNjIzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.f5i5ESrZw5wiM00wMJcljBTtDoZKDUg25WBCSevby-0
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: refresh_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2MzksImV4cCI6MTc1MDQxNzQzOSwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.1cGbPmZCVN9IOlsU8dWZyfTkCLtBDSuQCXNZum4j0KA
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Redirecionar setado para TRUE. Tokens válidos na sessão.
+[13-Jun-2025 13:03:59 Europe/Berlin] DEBUG INDEX: Valor final da variável $redirecionar antes da renderização: TRUE
+[13-Jun-2025 13:04:00 Europe/Berlin] DEBUG INDEX: Valor final da variável $redirecionar antes da renderização: FALSE
+[13-Jun-2025 13:04:02 Europe/Berlin] DEBUG INDEX: Valor final da variável $redirecionar antes da renderização: FALSE
+[13-Jun-2025 13:04:04 Europe/Berlin] DEBUG INDEX: Tentando conectar a: http://localhost/arthur/contador_phpv2/back-end/endpoints/login_user.php
+[13-Jun-2025 13:04:04 Europe/Berlin] DEBUG INDEX: Resposta bruta de file_get_contents: {"mensagem":"Login realizado com sucesso!","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2NDQsImV4cCI6MTc0OTgxNjI0NCwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.l8ndi5VJWaxdnr48ACp1HXrKm9G_P5MundAlze47Ra4","refreshToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2NDQsImV4cCI6MTc1MDQxNzQ0NCwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.XzMLlOVtMfVk32XbtMQh9TyidlVf3_5OxDkw68dSqRw","expira_em":"2025-06-13 09:04:04","id_usuario":14,"nome":"Davi"}
+[13-Jun-2025 13:04:04 Europe/Berlin] DEBUG INDEX: Resposta JSON decodificada: Array
+(
+    [mensagem] => Login realizado com sucesso!
+    [accessToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2NDQsImV4cCI6MTc0OTgxNjI0NCwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.l8ndi5VJWaxdnr48ACp1HXrKm9G_P5MundAlze47Ra4
+    [refreshToken] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2NDQsImV4cCI6MTc1MDQxNzQ0NCwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.XzMLlOVtMfVk32XbtMQh9TyidlVf3_5OxDkw68dSqRw
+    [expira_em] => 2025-06-13 09:04:04
+    [id_usuario] => 14
+    [nome] => Davi
+)
+
+[13-Jun-2025 13:04:04 Europe/Berlin] DEBUG INDEX: access_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2NDQsImV4cCI6MTc0OTgxNjI0NCwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.l8ndi5VJWaxdnr48ACp1HXrKm9G_P5MundAlze47Ra4
+[13-Jun-2025 13:04:04 Europe/Berlin] DEBUG INDEX: refresh_token na SESSION: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk4MTI2NDQsImV4cCI6MTc1MDQxNzQ0NCwiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.XzMLlOVtMfVk32XbtMQh9TyidlVf3_5OxDkw68dSqRw
+[13-Jun-2025 13:04:04 Europe/Berlin] DEBUG INDEX: Redirecionar setado para TRUE. Tokens válidos na sessão.
+[13-Jun-2025 13:04:05 Europe/Berlin] DEBUG INDEX: Valor final da variável $redirecionar antes da renderização: TRUE
+[13-Jun-2025 13:04:06 Europe/Berlin] DEBUG INDEX: Valor final da variável $redirecionar antes da renderização: FALSE

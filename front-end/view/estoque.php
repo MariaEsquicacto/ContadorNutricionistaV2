@@ -80,7 +80,6 @@ if ($mysqli && !$mysqli->connect_error) { // Garante que $mysqli existe e está 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="../css/estoque.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Estoque</title>
     <style>
         /* (Seus estilos CSS existentes aqui. Mantenha-os como estão.) */
@@ -146,6 +145,7 @@ if ($mysqli && !$mysqli->connect_error) { // Garante que $mysqli existe e está 
             background-color: #bd2130;
             transform: scale(1.1);
         }
+
 
         
     </style>

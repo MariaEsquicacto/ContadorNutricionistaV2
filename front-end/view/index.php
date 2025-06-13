@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ];
 
     $context = stream_context_create($opts);
-    $result = file_get_contents('http://localhost/contador_phpv2-main/back-end/endpoints/login_user.php', false, $context);
+    $result = file_get_contents('http://localhost/Contador_phpv2-main/back-end/endpoints/login_user.php', false, $context);
 
 
     if ($result === false) {

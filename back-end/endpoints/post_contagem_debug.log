@@ -1,0 +1,154 @@
+[11-Jun-2025 18:30:26 Europe/Berlin] DEBUG: [POST_CONTAGEM] JSON bruto recebido: {
+  "contagens_turmas": [
+    {"turma_id": 1, "quantidade": "6"},
+    {"turma_id": 2, "quantidade": "3"},
+    {"turma_id": 3, "quantidade": "32"},
+    {"turma_id": 4, "quantidade": "54"},
+    {"turma_id": 5, "quantidade": "10"},
+    {"turma_id": 6, "quantidade": "8"},
+    {"turma_id": 7, "quantidade": "36"},
+    {"turma_id": 8, "quantidade": "8"},
+    {"turma_id": 9, "quantidade": "9"},
+    {"turma_id": 10, "quantidade": "30"},
+    {"turma_id": 11, "quantidade": "53"},
+    {"turma_id": 12, "quantidade": "999"}
+  ]
+}
+
+[11-Jun-2025 18:30:26 Europe/Berlin] DEBUG: [POST_CONTAGEM] Dados decodificados: Array
+(
+    [contagens_turmas] => Array
+        (
+            [0] => Array
+                (
+                    [turma_id] => 1
+                    [quantidade] => 6
+                )
+
+            [1] => Array
+                (
+                    [turma_id] => 2
+                    [quantidade] => 3
+                )
+
+            [2] => Array
+                (
+                    [turma_id] => 3
+                    [quantidade] => 32
+                )
+
+            [3] => Array
+                (
+                    [turma_id] => 4
+                    [quantidade] => 54
+                )
+
+            [4] => Array
+                (
+                    [turma_id] => 5
+                    [quantidade] => 10
+                )
+
+            [5] => Array
+                (
+                    [turma_id] => 6
+                    [quantidade] => 8
+                )
+
+            [6] => Array
+                (
+                    [turma_id] => 7
+                    [quantidade] => 36
+                )
+
+            [7] => Array
+                (
+                    [turma_id] => 8
+                    [quantidade] => 8
+                )
+
+            [8] => Array
+                (
+                    [turma_id] => 9
+                    [quantidade] => 9
+                )
+
+            [9] => Array
+                (
+                    [turma_id] => 10
+                    [quantidade] => 30
+                )
+
+            [10] => Array
+                (
+                    [turma_id] => 11
+                    [quantidade] => 53
+                )
+
+            [11] => Array
+                (
+                    [turma_id] => 12
+                    [quantidade] => 999
+                )
+
+        )
+
+)
+
+[11-Jun-2025 18:30:26 Europe/Berlin] DEBUG: [POST_CONTAGEM] Erro de validação: 'data_contagem' ausente ou vazio.
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] JSON bruto recebido: {"data_contagem":"2025-06-11","contagens_turmas":[{"turma_id":1,"quantidade":7},{"turma_id":2,"quantidade":11}]}
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] Dados decodificados: Array
+(
+    [data_contagem] => 2025-06-11
+    [contagens_turmas] => Array
+        (
+            [0] => Array
+                (
+                    [turma_id] => 1
+                    [quantidade] => 7
+                )
+
+            [1] => Array
+                (
+                    [turma_id] => 2
+                    [quantidade] => 11
+                )
+
+        )
+
+)
+
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] Validação inicial dos dados JSON bem-sucedida.
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] Cabeçalho Authorization bruto: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk2NTk0MzcsImV4cCI6MTc0OTY2MzAzNywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.l7C2_BRrLpsp-GY2m8Nmrgen2BLZlwvhspwAlK9EniA
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] Token JWT extraído: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk2NTk0MzcsImV4cCI6MTc0OTY2MzAzNywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.l7C2_BRrLpsp-GY2m8Nmrgen2BLZlwvhspwAlK9EniA
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] Token JWT decodificado com sucesso. ID do usuário: 14
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] Conexão com o banco de dados está ATIVA e válida.
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] Transação iniciada.
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] Tentando INSERT na tabela 'contagem'. SQL: INSERT INTO contagem (quant_contagem, criacao_contagem, update_contagem, usuarios_id_usuario, data_contagem) VALUES (0, NOW(), NOW(), ?, ?)
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] ERRO CRÍTICO NA TRANSAÇÃO (ROLLBACK): Unknown column 'data_contagem' in 'field list'
+[11-Jun-2025 18:30:47 Europe/Berlin] DEBUG: [POST_CONTAGEM] Transação ROLLBACK concluída devido ao erro.
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] JSON bruto recebido: {"data_contagem":"2025-06-11","contagens_turmas":[{"turma_id":1,"quantidade":0}]}
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] Dados decodificados: Array
+(
+    [data_contagem] => 2025-06-11
+    [contagens_turmas] => Array
+        (
+            [0] => Array
+                (
+                    [turma_id] => 1
+                    [quantidade] => 0
+                )
+
+        )
+
+)
+
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] Validação inicial dos dados JSON bem-sucedida.
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] Cabeçalho Authorization bruto: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk2NTk0MzcsImV4cCI6MTc0OTY2MzAzNywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.l7C2_BRrLpsp-GY2m8Nmrgen2BLZlwvhspwAlK9EniA
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] Token JWT extraído: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDk2NTk0MzcsImV4cCI6MTc0OTY2MzAzNywiaWRfdXN1YXJpbyI6MTQsIm5vbWUiOiJEYXZpIiwibml2ZWwiOiIxIn0.l7C2_BRrLpsp-GY2m8Nmrgen2BLZlwvhspwAlK9EniA
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] Token JWT decodificado com sucesso. ID do usuário: 14
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] Conexão com o banco de dados está ATIVA e válida.
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] Transação iniciada.
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] Tentando INSERT na tabela 'contagem'. SQL: INSERT INTO contagem (quant_contagem, criacao_contagem, update_contagem, usuarios_id_usuario, data_contagem) VALUES (0, NOW(), NOW(), ?, ?)
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] ERRO CRÍTICO NA TRANSAÇÃO (ROLLBACK): Unknown column 'data_contagem' in 'field list'
+[11-Jun-2025 18:31:23 Europe/Berlin] DEBUG: [POST_CONTAGEM] Transação ROLLBACK concluída devido ao erro.

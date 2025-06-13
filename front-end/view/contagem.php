@@ -2,7 +2,7 @@
 session_start();
 
 // Pega a data selecionada do calendário via parâmetro GET
-$dataSelecionada = $_GET['data'] ?? ''; // Formato esperado: YYYY-MM-DD
+$dataSelecionada = $_GET['data'] ?? ''; // Formato esperado:YYYY-MM-DD
 
 // Opcional: Validar e formatar a data para exibição se necessário
 $dataParaExibicao = '';
@@ -68,9 +68,21 @@ if (!empty($dataSelecionada)) {
     </footer>
 
     <script>
+        console.log(accessTokenFromPHP)
+
+        // Funções do Menu Hambúrguer (Duplicadas em cada página)
         document.addEventListener('DOMContentLoaded', () => {
+            const abrir_menu = document.querySelector('.hamburguer');
+            const menu = document.querySelector('.menu');
+
+            if (abrir_menu && menu) {
+                abrir_menu.addEventListener('click', () => {
+                    abrir_menu.classList.toggle('aberto');
+                    menu.classList.toggle('ativo');
+                });
+            }
+
             // Data selecionada vinda do PHP (precisa ser codificada para URL)
-            // É importante que essa variável JS pegue o valor do PHP.
             const dataSelecionadaPHP = "<?php echo urlencode($dataSelecionada); ?>";
 
             const botoesCategorias = document.querySelectorAll('.btn_contagens');
@@ -90,7 +102,7 @@ if (!empty($dataSelecionada)) {
                 });
             });
 
-            // Lógica do botão de logout (repetida em cada página, pois JS é inline)
+            // Lógica do botão de logout (repetida em cada página)
             const logoutBtn = document.getElementById('logout-btn');
             if (logoutBtn) {
                 logoutBtn.addEventListener('click', async function(e) {

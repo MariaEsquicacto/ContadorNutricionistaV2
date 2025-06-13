@@ -3,26 +3,27 @@ session_start(); // Inicia a sessão para acesso a tokens, se necessário
 
 // Mapeamento das categorias para os anos/séries com IDs de turma (PHP)
 // ESTES SÃO EXEMPLOS. SUBSTITUA PELOS IDs REAIS DO SEU BANCO DE DADOS!
+// Cada 'id' AQUI DEVE SER O ID REAL DA TURMA NO SEU BANCO DE DADOS.
 $categoriasSalasPHP = [
     "Contagem Ensino Fundamental 1A" => [
         "titulo" => "Fundamental 1A",
         "anos" => [
-            ["nome" => "1º Ano", "id" => 1], // Mude para o ID real da turma "1º Ano"
-            ["nome" => "2º Ano", "id" => 2]  // Mude para o ID real da turma "2º Ano"
+            ["nome" => "1º Ano", "id" => 1], // **Mude para o ID REAL da turma "1º Ano" no seu DB**
+            ["nome" => "2º Ano", "id" => 2]  // **Mude para o ID REAL da turma "2º Ano" no seu DB**
         ]
     ],
     "Contagem Ensino Fundamental 1B" => [
         "titulo" => "Fundamental 1B",
         "anos" => [
-            ["nome" => "3º Ano", "id" => 3],
-            ["nome" => "4º Ano", "id" => 4],
-            ["nome" => "5º Ano", "id" => 5]
+            ["nome" => "3º Ano", "id" => 3], // **Mude para o ID REAL da turma "3º Ano" no seu DB**
+            ["nome" => "4º Ano", "id" => 4], // **Mude para o ID REAL da turma "4º Ano" no seu DB**
+            ["nome" => "5º Ano", "id" => 5]  // **Mude para o ID REAL da turma "5º Ano" no seu DB**
         ]
     ],
     "Contagem Ensino Fundamental 2" => [
         "titulo" => "Fundamental 2",
         "anos" => [
-            ["nome" => "6º Ano", "id" => 6],
+            ["nome" => "6º Ano", "id" => 6], // **Mude para o ID REAL da turma "6º Ano" no seu DB**
             ["nome" => "7º Ano", "id" => 7],
             ["nome" => "8º Ano", "id" => 8],
             ["nome" => "9º Ano", "id" => 9]
@@ -31,7 +32,7 @@ $categoriasSalasPHP = [
     "Ensino Médio" => [
         "titulo" => "Ensino Médio",
         "anos" => [
-            ["nome" => "1º Ano", "id" => 10],
+            ["nome" => "1º Ano", "id" => 10], // **Mude para o ID REAL da turma "1º Ano" no seu DB**
             ["nome" => "2º Ano", "id" => 11],
             ["nome" => "3º Ano", "id" => 12]
         ]
@@ -40,7 +41,7 @@ $categoriasSalasPHP = [
 
 // Pega a categoria e a data dos parâmetros GET
 $categoriaSelecionada = $_GET['categoria'] ?? '';
-$dataSelecionada = $_GET['data'] ?? ''; // Formato YYYY-MM-DD
+$dataSelecionada = $_GET['data'] ?? ''; // Formato esperado: YYYY-MM-DD
 
 $dadosCategoria = $categoriasSalasPHP[$categoriaSelecionada] ?? null;
 
@@ -100,7 +101,7 @@ $anosDaCategoria = $dadosCategoria['anos'];
         </section>
 
         <div id="btn_feito">
-            <button>Concluído e Enviar</button>
+            <button>Enviar</button>
         </div>
     </main>
 
@@ -129,16 +130,28 @@ $anosDaCategoria = $dadosCategoria['anos'];
     </dialog>
 
     <script>
+        console.log(accessTokenFromPHP)
+
+        const abrir_menu = document.querySelector('.hamburguer');
+        const menu = document.querySelector('.menu');
+
+        // Verifica se os elementos do menu existem na página atual
+        if (abrir_menu && menu) {
+            abrir_menu.addEventListener('click', () => {
+                abrir_menu.classList.toggle('aberto'); // Adiciona/remove a classe 'aberto' no botão
+                menu.classList.toggle('ativo'); // Adiciona/remove a classe 'ativo' no menu (nav)
+            });
+        }
+
         // Variável para armazenar as contagens das turmas antes de enviar
+        // A chave será o nome da sala (ex: "1º Ano"), o valor será um objeto {id: turma_id, quantidade: N}
         let contagensPorTurma = {};
-        let currentTurmaId = null; // Para armazenar o ID da turma do modal atual
+        let currentTurmaId = null; // Para armazenar o ID da turma do modal atualmente aberto
 
         // A data selecionada do calendário, passada via PHP (Formato YYYY-MM-DD)
         const dataSelecionadaPHP = "<?php echo $dataSelecionada; ?>";
 
         // --- Funções Auxiliares para Tokens e Logout ---
-        // Removida a tentativa de fetch para refresh_token.php, pois não existe esse endpoint.
-        // Se o access_token não existe ou é inválido, o usuário deve relogar.
         const logoutBtn = document.getElementById('logout-btn');
         if (logoutBtn) {
             logoutBtn.addEventListener('click', async function(e) {
@@ -147,8 +160,8 @@ $anosDaCategoria = $dadosCategoria['anos'];
 
                 if (!currentRefreshToken) {
                     alert('Não há token para logout.');
-                    sessionStorage.clear(); // Limpa a sessão local mesmo sem token
-                    window.location.href = 'index.php';
+                    sessionStorage.clear();
+                    window.location.href = 'index.php'; // Redireciona para sua página de login
                     return;
                 }
 
@@ -174,14 +187,14 @@ $anosDaCategoria = $dadosCategoria['anos'];
                     alert('Erro na requisição de logout: ' + err.message);
                     console.error("Erro de rede no logout:", err);
                 } finally {
-                    sessionStorage.clear(); // Sempre limpa a sessão local após tentar logout
-                    window.location.href = 'index.php';
+                    sessionStorage.clear();
+                    window.location.href = 'index.php'; // Redireciona para sua página de login
                 }
             });
         }
         // --- Fim Funções Auxiliares ---
 
-        // Função para alterar o valor do contador no modal (global para onclick)
+        // Função global para alterar o valor do contador no modal (chamada via onclick no HTML)
         window.alterarValor = function(delta) {
             const input = document.getElementById('valor');
             if (!input) return;
@@ -194,35 +207,39 @@ $anosDaCategoria = $dadosCategoria['anos'];
             input.value = valor;
         };
 
+        // Lógica principal executada após o DOM ser completamente carregado
         document.addEventListener('DOMContentLoaded', () => {
-            const botoesAnos = document.querySelectorAll('.botoes-anos .btn_contagens');
+            const botoesAnos = document.querySelectorAll('.botoes-anos .btn_contagens'); // Seleciona TODOS os botões de ano/série
             const modal = document.getElementById('modal');
             const tituloModal = document.getElementById('titulo-modal');
             const inputValorModal = document.getElementById('valor');
-            const btnFeitoTelaSalas = document.querySelector('#btn_feito button');
-            const btnFeitoModal = modal ? modal.querySelector('.btn-feito') : null;
+            const btnFeitoTelaSalas = document.querySelector('#btn_feito button'); // Botão "Concluído e Enviar" da tela
+            const btnFeitoModal = modal ? modal.querySelector('.btn-feito') : null; // Botão "Feito" dentro do modal
 
-            // Adiciona listeners para os botões de ano/série (gerados pelo PHP)
+            // Adiciona event listeners a CADA UM dos botões de ano/série gerados pelo PHP
             botoesAnos.forEach(button => {
                 button.addEventListener('click', () => {
                     const nomeAno = button.innerText.trim();
-                    const turmaId = parseInt(button.dataset.turmaId); // Pega o ID do data-attribute
+                    // Captura o ID da turma do atributo data-turma-id que o PHP injetou
+                    const turmaId = parseInt(button.dataset.turmaId);
+
+                    console.log(`Botão de sala clicado: ${nomeAno}, Turma ID: ${turmaId}`); // Ajuda na depuração
 
                     if (tituloModal) {
-                        tituloModal.innerText = nomeAno;
+                        tituloModal.innerText = nomeAno; // Define o título do modal
                     }
                     if (inputValorModal) {
-                        // Carrega o valor salvo anteriormente para esta turma, se existir
+                        // Carrega o valor que foi salvo localmente para esta sala, se existir; caso contrário, 0
                         inputValorModal.value = contagensPorTurma[nomeAno] ? contagensPorTurma[nomeAno].quantidade : 0;
                     }
-                    currentTurmaId = turmaId; // Guarda o ID da turma selecionada no modal
+                    currentTurmaId = turmaId; // Armazena o ID da turma atual para uso quando o modal for "Feito"
                     if (modal) {
-                        modal.showModal();
+                        modal.showModal(); // Abre o modal
                     }
                 });
             });
 
-            // Lógica para fechar modal ao clicar fora dele
+            // Lógica para fechar o modal ao clicar fora dele (background)
             if (modal) {
                 window.onclick = function(event) {
                     if (event.target === modal) {
@@ -238,7 +255,7 @@ $anosDaCategoria = $dadosCategoria['anos'];
                         const nomeSala = tituloModal.innerText.trim();
                         const quantidade = parseInt(inputValorModal.value);
 
-                        // Armazena a contagem para a sala atual
+                        // Armazena a contagem no objeto 'contagensPorTurma'
                         contagensPorTurma[nomeSala] = {
                             id: currentTurmaId,
                             quantidade: quantidade
@@ -246,27 +263,28 @@ $anosDaCategoria = $dadosCategoria['anos'];
                         console.log(`Contagem para "${nomeSala}" (ID: ${currentTurmaId}) salva localmente: ${quantidade}`);
                         console.log("Contagens atuais armazenadas:", contagensPorTurma);
                     }
-                    modal.close();
+                    modal.close(); // Fecha o modal
                 });
             }
 
-            // Lógica do botão "Feito" DA TELA DE SELEÇÃO DE SALAS (para enviar ao backend)
+            // Lógica do botão "Concluído e Enviar" DA TELA DE SELEÇÃO DE SALAS (para enviar ao backend)
             if (btnFeitoTelaSalas) {
                 btnFeitoTelaSalas.addEventListener('click', async () => {
-                    // Obtém o access token do sessionStorage
+                    // Obtém o access token do sessionStorage. Esta é a primeira linha de defesa.
                     const accessToken = sessionStorage.getItem('access_token');
                     if (!accessToken) {
-                        // Se não há access token, alerta e redireciona para o login.
                         alert("Sessão expirada ou token de acesso não encontrado. Faça login novamente.");
-                        window.location.href = 'index.php';
+                        window.location.href = 'index.php'; // Redireciona para sua página de login
                         return;
                     }
 
+                    // Prepara os dados no formato esperado pelo endpoint PHP
                     const dadosParaEnviar = {
-                        data_contagem: dataSelecionadaPHP,
-                        contagens_turmas: []
+                        data_contagem: dataSelecionadaPHP, // A data selecionada do calendário
+                        contagens_turmas: [] // Array para as contagens de cada turma
                     };
 
+                    // Itera sobre as contagens armazenadas localmente para preencher 'contagens_turmas'
                     for (const nomeSala in contagensPorTurma) {
                         if (contagensPorTurma.hasOwnProperty(nomeSala)) {
                             const turmaData = contagensPorTurma[nomeSala];
@@ -277,6 +295,7 @@ $anosDaCategoria = $dadosCategoria['anos'];
                         }
                     }
 
+                    // Verifica se há alguma contagem para enviar
                     if (dadosParaEnviar.contagens_turmas.length === 0) {
                         alert("Nenhuma contagem de turma para enviar. Por favor, preencha as contagens.");
                         return;
@@ -285,33 +304,36 @@ $anosDaCategoria = $dadosCategoria['anos'];
                     console.log("Dados que serão enviados ao backend:", dadosParaEnviar);
 
                     try {
+                        // Envia os dados para o endpoint PHP
                         const response = await fetch('../../back-end/endpoints/post_contagem.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
-                                'Authorization': `${accessToken}` // Envia o Access Token no cabeçalho
+                                'Authorization': `Bearer ${accessToken}` // IMPORTANTE: Adiciona "Bearer " antes do token
                             },
-                            body: JSON.stringify(dadosParaEnviar)
+                            body: JSON.stringify(dadosParaEnviar) // Converte o objeto JavaScript em JSON
                         });
 
-                        const result = await response.json();
+                        const result = await response.json(); // Analisa a resposta JSON do servidor
 
-                        if (response.ok) {
+                        if (response.ok) { // Se a resposta HTTP for 2xx (Sucesso)
                             alert(result.mensagem || "Contagem enviada com sucesso!");
                             contagensPorTurma = {}; // Limpa as contagens após o envio
-                            window.location.href = "contagem.php"; // Redireciona
+                            // Redireciona para a página de contagem de categorias,
+                            // PASSANDO A DATA DE VOLTA para que ela não seja perdida
+                            window.location.href = `contagem.php?data=${encodeURIComponent(dataSelecionadaPHP)}`;
                         } else {
-                            // Se a resposta não foi ok (ex: 401 Unauthorized), pode ser token inválido/expirado
+                            // Se a resposta não foi OK (ex: 401 Unauthorized, 403 Forbidden, 500 Internal Server Error)
                             if (response.status === 401 || response.status === 403) {
                                 alert("Sessão inválida ou expirada. Faça login novamente.");
                                 sessionStorage.clear(); // Limpa tokens locais
-                                window.location.href = 'index.php'; // Redireciona para login
+                                window.location.href = 'index.php'; // Redireciona para sua página de login
                             } else {
                                 alert(`Erro ao enviar contagem: ${result.erro || "Erro desconhecido"}`);
                                 console.error("Erro do servidor:", result);
                             }
                         }
-                    } catch (error) {
+                    } catch (error) { // Erros de rede (sem conexão, DNS falhou, etc.) ou problemas de parsing JSON
                         alert("Erro na requisição: " + error.message + ". Verifique sua conexão ou o caminho do endpoint.");
                         console.error("Erro de rede ou processamento:", error);
                     }
